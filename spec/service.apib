@@ -1,25 +1,46 @@
-# ServiceSubscribe
+# Subscription
 
 Subscribe Spec
 
-## Service Collection [/subscriptions]
+## Subscription Collection [/subscriptions]
 
 ### Get subscriptions [GET]
 
 + Response 200 (application/json)
+    + Attributes (array)
+        + (Subscription)
+        + (Subscription)
+            + id: "2853553"
+            + ServiceType: Reddit
+
+### Post Subscription [POST]
+
++ Attributes (Subscription)
++ Request (application/json)
     + Header
         client_id: "356278"
+    + Attributes (Subscription)
+
+
+## widgets config Collection [/widgetsConfig{?subscriptionsId}]
+
+### Get widgets config [GET]
+
++ Response 200 (application/json)
     + Attributes (array)
-        + (Service)
-        + (Service)
-            + name: Reddit
-            + widgets: REDDIT_LATEST_SUBREDIT_POST_NAME, REDDIT_LATEST_SUBREDIT_POST_COMMENTARY
+        + (ON_WEATHER_CONF)
+        + (ON_WEATHER_CONF)
+            + city: "Bordeaux"
+        + (YT_NB_FOLLOWERS_CONF)
 
-### Post subscriptions [Post]
+### Post widget config [POST]
 
-+ Attributes (Service)
++ Attributes (WidgetConfig)
 + Request (application/json)
-    + Attributes (Service)
+    + Header
+        client_id: "356278"
+    + Attributes (YT_NB_LIKE_CONF)
+
 
 # Data Structures
 
@@ -37,32 +58,40 @@ Subscribe Spec
     + "REDDIT_LATEST_SUBREDIT_POST_NAME"
     + "REDDIT_LATEST_SUBREDIT_POST_COMMENTARY"
 
+## Subscription:
++ id: (string)
++ userID: (string, required)
++ accessToken: (string, required)
++ ServiceType: Youtube (ServiceName, required)
+
 ## Service
 + name: Youtube (ServiceName, required)
 + widgets_name: YT_NB_FOLLOWERS, YT_NB_LIKE (array[WidgetType], required)
 
-## WIDGET
+## WidgetConfig
 + id: (string, required)
++ subscriptionsId: (string)
++ type: YT_NB_FOLLOWERS (WidgetType)
 + is_authentificated: true (bool, required)
 + refresh_rate: (number, required)
 
-## YT_NB_FOLLOWERS_CONF (WIDGET)
+## YT_NB_FOLLOWERS_CONF (WidgetConfig)
 + channel_id: PRIME (string, required)
 
-## YT_NB_LIKE_CONF (WIDGET)
+## YT_NB_LIKE_CONF (WidgetConfig)
 + video_id: https://www.youtube.com/watch?v=ZghJqBwIpYI (string, required)
 
-## OW_WEATHER_CONF (WIDGET)
+## OW_WEATHER_CONF (WidgetConfig)
 + country: France (string, optional)
 + city: Bayonne (string)
 
-## HN_NB_LATEST_POST_CONF (WIDGET)
+## HN_NB_LATEST_POST_CONF (WidgetConfig)
 + nb_wanted_post: 4 (number)
 
-## REDDIT_LATEST_SUBREDIT_POST_NAME_CONF (WIDGET)
+## REDDIT_LATEST_SUBREDIT_POST_NAME_CONF (WidgetConfig)
 + subreddit_name: "Rust" (string)
 + nb_wanted_post: 4 (number)
 
-## REDDIT_LATEST_SUBREDIT_POST_COMMENTARY_CONF (WIDGET)
+## REDDIT_LATEST_SUBREDIT_POST_COMMENTARY_CONF (WidgetConfig)
 + subreddit_name: "Rust" (string, required)
 + post_name: "When will Rust kill cpp ?"
