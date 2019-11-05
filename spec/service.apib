@@ -38,34 +38,31 @@ Subscribe Spec
     + "REDDIT_LATEST_SUBREDIT_POST_COMMENTARY"
 
 ## Service
-+ name: Youtube (ServiceName, required),
++ name: Youtube (ServiceName, required)
 + widgets_name: YT_NB_FOLLOWERS, YT_NB_LIKE (array[WidgetType], required)
 
-## YT_NB_FOLLOWERS_CONF
-+ channel_id: PRIME (string, required),
+## WIDGET
++ id: (string, required)
++ is_authentificated: true (bool, required)
++ refresh_rate: (number, required)
 
-## YT_NB_LIKE_CONF
-+ video_id: https://www.youtube.com/watch?v=ZghJqBwIpYI (string)
+## YT_NB_FOLLOWERS_CONF (WIDGET)
++ channel_id: PRIME (string, required)
 
-## OW_WEATHER_CONF
-+ country: France (string, optional),
-+ city: Bayonne (string),
+## YT_NB_LIKE_CONF (WIDGET)
++ video_id: https://www.youtube.com/watch?v=ZghJqBwIpYI (string, required)
 
-## HN_NB_LATEST_POST_CONF
-+ nb_wanted_post: 4 (number),
+## OW_WEATHER_CONF (WIDGET)
++ country: France (string, optional)
++ city: Bayonne (string)
 
-## REDDIT_LATEST_SUBREDIT_POST_NAME_CONF
+## HN_NB_LATEST_POST_CONF (WIDGET)
++ nb_wanted_post: 4 (number)
+
+## REDDIT_LATEST_SUBREDIT_POST_NAME_CONF (WIDGET)
 + subreddit_name: "Rust" (string)
-+ nb_wanted_post: 4 (number),
++ nb_wanted_post: 4 (number)
 
-## REDDIT_LATEST_SUBREDIT_POST_COMMENTARY_CONF
-+ subreddit_name: "Rust" (string)
+## REDDIT_LATEST_SUBREDIT_POST_COMMENTARY_CONF (WIDGET)
++ subreddit_name: "Rust" (string, required)
 + post_name: "When will Rust kill cpp ?"
-
-
-
-//just a model in db
-/* ## Subscriptions */
-/* + userId: 348868764 (string, optional) */
-/* + services: (Service) */
-
