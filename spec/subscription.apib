@@ -31,9 +31,12 @@ Subscribe Spec
 + Response 200 (application/json)
     + Attributes (array)
         + (OwWeatherConf)
+            + type: OW_WEATHER
         + (OwWeatherConf)
-            + city: "Bordeaux"
+            + type: OW_WEATHER
+            + city: Bordeaux
         + (YtNbFollowersConf)
+            + type: YT_NB_FOLLOWERS
 
 ### Post widget config [POST]
 
@@ -72,7 +75,7 @@ Subscribe Spec
 ## WidgetConfig (object)
 + id: (string, required)
 + subscriptionsId: 296633 (string, required)
-+ type: YT_NB_FOLLOWERS (WidgetType)
++ type: (WidgetType)
 + isAuthentificated: true (boolean, required)
 + refreshRate: 3 (number, required)
 
