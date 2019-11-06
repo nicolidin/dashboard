@@ -21,15 +21,19 @@ Subscribe Spec
         client_id: "356278"
     + Attributes (Subscription)
 
++ Response 201
 
-## widgets config Collection [/widgetsConfig{?subscriptionsId}]
+## WidgetConfig [/widgetsConfig{?subscriptionsId}]
+
++ Parameters
+    + subscriptionsId: (number, required)
 
 ### Get widgets config [GET]
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (ON_WEATHER_CONF)
-        + (ON_WEATHER_CONF)
+        + (OW_WEATHER_CONF)
+        + (OW_WEATHER_CONF)
             + city: "Bordeaux"
         + (YT_NB_FOLLOWERS_CONF)
 
@@ -41,6 +45,7 @@ Subscribe Spec
         client_id: "356278"
     + Attributes (YT_NB_LIKE_CONF)
 
++ Response 201
 
 # Data Structures
 
@@ -59,9 +64,9 @@ Subscribe Spec
     + "REDDIT_LATEST_SUBREDIT_POST_COMMENTARY"
 
 ## Subscription:
-+ id: (string)
-+ userID: (string, required)
-+ accessToken: (string, required)
++ id: 296633 (string, required)
++ userID: 2363692 (string, required)
++ accessToken: 26396363 (string, required)
 + ServiceType: Youtube (ServiceName, required)
 
 ## Service
@@ -70,28 +75,28 @@ Subscribe Spec
 
 ## WidgetConfig
 + id: (string, required)
-+ subscriptionsId: (string)
++ subscriptionsId: 296633 (string, required)
 + type: YT_NB_FOLLOWERS (WidgetType)
-+ is_authentificated: true (bool, required)
-+ refresh_rate: (number, required)
++ isAuthentificated: true (boolean, required)
++ refreshRate: 3 (number, required)
 
 ## YT_NB_FOLLOWERS_CONF (WidgetConfig)
 + channel_id: PRIME (string, required)
 
 ## YT_NB_LIKE_CONF (WidgetConfig)
-+ video_id: https://www.youtube.com/watch?v=ZghJqBwIpYI (string, required)
++ video_id: `https://www.youtube.com/watch?v=ZghJqBwIpYI` (string, required)
 
 ## OW_WEATHER_CONF (WidgetConfig)
 + country: France (string, optional)
-+ city: Bayonne (string)
++ city: Bayonne (string, required)
 
-## HN_NB_LATEST_POST_CONF (WidgetConfig)
-+ nb_wanted_post: 4 (number)
+## HNNbLatestPost (WidgetConfig)
++ nb_wanted_post: 4 (number, required)
 
 ## REDDIT_LATEST_SUBREDIT_POST_NAME_CONF (WidgetConfig)
-+ subreddit_name: "Rust" (string)
-+ nb_wanted_post: 4 (number)
++ subreddit_name: "Rust" (string, required)
++ nb_wanted_post: 4 (number, required)
 
 ## REDDIT_LATEST_SUBREDIT_POST_COMMENTARY_CONF (WidgetConfig)
 + subreddit_name: "Rust" (string, required)
-+ post_name: "When will Rust kill cpp ?"
++ post_name: "When will Rust kill cpp ?" (string, required)
