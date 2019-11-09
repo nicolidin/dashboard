@@ -1,0 +1,101 @@
+# Subscription Specification
+
+Subscribe Specification
+
+## Subscription Endpoint [/subscriptions]
+
+### Get subscriptions [GET]
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Subscription)
+        + (Subscription)
+            + id: "2853553"
+            + ServiceType: Reddit
+
+### Post Subscription [POST]
+
++ Attributes (Subscription)
++ Request (application/json)
+    + Attributes (Subscription)
+
++ Response 201
+
+## WidgetConfig Endpoint [/widgetsConfig{?subscriptionId}]
+
++ Parameters
+    + subscriptionId: (number, required)
+
+### Get widgets config [GET]
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (OwWeatherConf)
+            + type: OW_WEATHER
+        + (OwWeatherConf)
+            + type: OW_WEATHER
+            + city: Bordeaux
+        + (YtNbFollowersConf)
+            + type: YT_NB_FOLLOWERS
+
+### Post widget config [POST]
+
++ Attributes (WidgetConfig)
++ Request (application/json)
+    + Attributes (YtNbLikeConf)
+
++ Response 201
+
+# Data Structures
+
+## ServiceName (enum[String])
+    + "Youtube"
+    + "Reddit"
+    + "Hackernews"
+    + "Twitter"
+
+## WidgetType (enum[String])
+    + "YT_NB_FOLLOWERS"
+    + "YT_NB_LIKE"
+    + "OW_WEATHER"
+    + "HN_NB_LATEST_POST"
+    + "REDDIT_LATEST_SUBREDIT_POST_NAME"
+    + "REDDIT_LATEST_SUBREDIT_POST_COMMENTARY"
+
+## Subscription (object)
++ id: 296633 (string, required)
++ userID: 2363692 (string, required)
++ accessToken: 26396363 (string, required)
++ serviceType: Youtube (ServiceName, required) - description
+
+## Service (object)
++ name: Youtube (ServiceName, required)
++ widgetsName: YT_NB_FOLLOWERS, YT_NB_LIKE (array[WidgetType], required)
+
+## WidgetConfig (object)
++ id: (string, required)
++ subscriptionsId: 296633 (string, required)
++ type: (WidgetType)
++ isAuthentificated: true (boolean, required)
++ refreshRate: 3 (number, required)
+
+## YtNbFollowersConf (WidgetConfig)
++ channelId: PRIME (string, required)
+
+## YtNbLikeConf (WidgetConfig)
++ videoId:`https://www.youtube.com/watch?v=ZghJqBwIpYI`(string, required)
+
+## OwWeatherConf (WidgetConfig)
++ country: France (string, optional)
++ city: Bayonne (string, required)
+
+## HnNbLatestPost (WidgetConfig)
++ nbWantedPost: 4 (number, required)
+
+## RedditLatestSubreditPostNameConf (WidgetConfig)
++ subredditName: "Rust" (string, required)
++ nbWantedPost: 4 (number, required)
+
+## RedditLatestSubreditPostCommentaryConf (WidgetConfig)
++ subredditName: "Rust" (string, required)
++ postName: "When will Rust kill cpp ?" (string, required)
