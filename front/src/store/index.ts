@@ -1,29 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import RedditLatestSubreditPostNames from '@/models/reddit/latestSubreditPostNamesModel'
-Vue.use(Vuex)
+import redditStore from './redditStore'
 
-const redditStore = {
-  namespaced: true,
-  state: {
-    latestSubreditPostNames: RedditLatestSubreditPostNames,
-  },
-  mutations: {
-    setLatestSubreditPostNames(state: any, newVal: RedditLatestSubreditPostNames) {
-      state.latestSubreditPostNames = newVal;
-    }
-  },
-  actions: {
-    getLatestSubreditPostNames(context: any, latestSubreditPostNames: RedditLatestSubreditPostNames) {
-      //context.commit("setLatestSubreditPostNames", latestSubreditPostNames);
-      if (context.state.latestSubreditPostNames instanceof RedditLatestSubreditPostNames) {
-        console.log("tchoinnnnnn");
-      } else {
-        console.log("grosse pute");
-      }
-    }
-  },
-}
+Vue.use(Vuex)
 
 const openWeatherStore = {
   state: {
