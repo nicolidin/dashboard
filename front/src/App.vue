@@ -4,6 +4,21 @@
   </div>
 </template>
 
+<script lang="ts">
+// @ is an alias to /src
+
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import RedditLatestSubreditPostNames from '@/models/reddit/latestSubreditPostNamesModel';
+
+@Component
+export default class App extends Vue {
+  mounted() {
+    this.$store.dispatch("fetchAllWidgetConf");
+  }
+}
+
+</script>
+
 <style scoped lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
