@@ -11,7 +11,6 @@
 // @ is an alias to /src
 
 import { Component, Prop, Vue } from "vue-property-decorator";
-import RedditLatestSubreditPostNames from "@/models/reddit/latestSubreditPostNamesModel";
 
 @Component
 export default class Home extends Vue {
@@ -23,7 +22,6 @@ export default class Home extends Vue {
   }
   onSignIn(googleUser: any) {
     // Useful data for your client-side scripts:
-    console.log("salope");
     var profile = googleUser.getBasicProfile();
     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
     console.log("Full Name: " + profile.getName());
@@ -31,13 +29,11 @@ export default class Home extends Vue {
     console.log("Family Name: " + profile.getFamilyName());
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail());
-
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
   }
   mounted() {
-    this.$store.dispatch("fetchUserSubscriptions");
     //  this.$store.dispatch('redditStore/getLatestSubreditPostNames');
   }
 }

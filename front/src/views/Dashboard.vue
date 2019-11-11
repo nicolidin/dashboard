@@ -3,6 +3,7 @@
     <h1>DASHBOARD</h1>
     <Subscription serviceSubscribeName="Reddit" />
     <!-- <Subscription componentName="Youtube" /> -->
+    <!--loop in state tab  -->
   </div>
 </template>
 
@@ -12,11 +13,6 @@ import Subscription from "@/components/Subscriptions/Subscription.vue";
 
 @Component({ components: { Subscription } })
 export default class Dashboard extends Vue {
-  constructor() {
-    super();
-  }
-  mounted() {
-    console.log("ok je suis dans dashboard");
-  }
+  mounted() {}
 }
 </script>

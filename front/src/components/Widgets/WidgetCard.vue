@@ -10,13 +10,21 @@
       </a>
     </div>
     <div class="card-content">
-      <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      <component class="card-content" v-bind:is="configModel.componentName" />
+      <p>{{configModel.componentName}}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import SubRedditNames from "@/components/Widgets/RedditWidgets/SubRedditNames.vue";
 
-@Component
-export default class WidgetCard extends Vue {}
+@Component({ components: { SubRedditNames } })
+export default class WidgetCard extends Vue {
+  @Prop() private configModel!: any;
+  constructor() {
+    super();
+  }
+}
+</script>

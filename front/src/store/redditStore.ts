@@ -8,16 +8,11 @@ export class StateRedditSubscription {
 
 const getters = <GetterTree<StateRedditSubscription, any>>{
   getAllWidgetsConfig(state: StateRedditSubscription): Array<Object> {
-    console.log("je fuckingg get BROOOWW ALL MES CONFIG");
     var confArray = Array<Object>();
     if (state.latestSubreditPostNamesConf !== undefined) {
-      console.log("ok il est pas undefined");
-      console.log(state.latestSubreditPostNamesConf.componentName);
       confArray.push(state.latestSubreditPostNamesConf);
     }
-    else {
-      console.log("OH FUCK C'est undefined")
-    }
+    //TODO Do this for the others key state
     //TODO push the other widgetConfs
     return confArray;
   }
@@ -32,8 +27,13 @@ const mutations = <MutationTree<StateRedditSubscription>>{
 };
 
 const actions = <ActionTree<StateRedditSubscription, any>>{
+  fetchAllWidgetConfig(store) {
+    store.dispatch("fetchLatestSubRedditPostNames");
+    //TODO call other fetchModel
+  },
   fetchLatestSubRedditPostNames(store) {
-    console.log("je suis sensé fetch mais j'hardcore l'actualise de ma state");
+    //TODO
+    //je suis sensé fetch mais j'hardcore l'actualise de ma state
     var model = new LatestSubRedditPostNamesWidgetConfig("SubRedditNames", "", 0);//replace with fetching
     store.commit("setLatestSubreditPostNames", model);
   },

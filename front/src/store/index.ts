@@ -12,19 +12,34 @@ class State {
 }
 
 const mutations = <MutationTree<State>>{
-  setSubscriptionsNames(store, subNames: Array<string>) {
-    store.subscriptionsNames = subNames;
+  setSubscriptionsNames(state, subNames: Array<string>) {
+    state.subscriptionsNames = subNames;
+    console.log("les subNames: " + state.subscriptionsNames)
   }
 };
 
 const actions = <ActionTree<State, any>>{
   fetchUserSubscriptions(store) {
-    //fetch
+    //TODO fetch subscriptions
+    //the below line is just hardcoding -> TODO change it with fetching
     store.commit("setSubscriptionsNames", new Array<String>("Reddit", "Youtube"));
   },
   fetchAllWidgetConf(store) {
-    console.log("fetch all widget conf");
-    store.dispatch("redditStore/fetchLatestSubRedditPostNames");
+    for (var subscription of store.state.subscriptionsNames) {
+      switch (subscription) {
+        case "Reddit": {
+          store.dispatch("redditStore/fetchAllWidgetConfig");
+          break;
+        }
+        case "Google Actuality": {
+          //store.dispatch("googleActualityStore/fetchAllWidgetConfig");
+          break;
+        }
+        //fetch  all other model config
+        default:
+          break;
+      }
+    }
   }
 };
 
