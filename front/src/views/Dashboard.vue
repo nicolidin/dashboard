@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <h1>DASHBOARD</h1>
-    <Subscription componentName="Reddit" />
+    <Subscription serviceSubscribeName="Reddit" />
     <!-- <Subscription componentName="Youtube" /> -->
   </div>
 </template>
