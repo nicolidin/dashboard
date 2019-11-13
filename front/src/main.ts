@@ -5,8 +5,6 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-//import SubRedditNames from "@/components/Widgets/RedditWidgets/SubRedditNames.vue";
-//Vue.component("SubRedditNames", SubRedditNames);
 
 new Vue({
   router,

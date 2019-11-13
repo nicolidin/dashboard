@@ -1,5 +1,5 @@
 <template>
-  <div class="subscription">
+  <div class="subscription square">
     <h1>SUBSCRIPTION {{serviceSubscribeName}}</h1>
     <WidgetCard
       v-for="widgetConf in widgetsConf"
@@ -40,3 +40,10 @@ export default class Subscription extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.square {
+  width: 30vw;
+  height: 70vh;
+}
+</style>

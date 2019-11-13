@@ -16,8 +16,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Home extends Vue {
   goToDashboardVue() {
     this.$router.push({
-      name: "dashboard",
-      params: { componentName: "SubRedditNames" }
+      name: "dashboard"
     });
   }
   onSignIn(googleUser: any) {

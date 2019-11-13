@@ -16,3 +16,10 @@ export default class Dashboard extends Vue {
   mounted() {}
 }
 </script>
+<style scoped lang="scss">
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+
