@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import redditStore, { StateRedditSubscription } from './redditStore'
+import redditStore from './redditStore'
 import { GetterTree, MutationTree, ActionTree, ActionContext } from "vuex"
 
 Vue.use(Vuex)
 
 class State {
-  accessToken!: String;
-  clientId!: String;
+  accessToken!: string;
+  clientId!: string;
+  servicesNames: Array<string> = ["Reddit", "OpenWeather", "GoogleActuality"];
   subscriptionsNames: Array<string> = [];
 }
 
@@ -15,7 +16,7 @@ const mutations = <MutationTree<State>>{
   setSubscriptionsNames(state, subNames: Array<string>) {
     state.subscriptionsNames = subNames;
     console.log("les subNames: " + state.subscriptionsNames)
-  }
+  },
 };
 
 const actions = <ActionTree<State, any>>{
