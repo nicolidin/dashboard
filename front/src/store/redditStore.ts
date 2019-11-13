@@ -2,7 +2,7 @@ import LatestSubRedditPostNamesWidgetConfig from '@/models/reddit/latestSubredit
 import { GetterTree, MutationTree, ActionTree, ActionContext } from "vuex"
 
 export class StateRedditSubscription {
-  latestSubreditPostNamesConf: LatestSubRedditPostNamesWidgetConfig | undefined = undefined;
+  latestSubreditPostNamesConf: Array<LatestSubRedditPostNamesWidgetConfig> | undefined = undefined;
   // all the other model corresponding to this subscription
 }
 
@@ -10,9 +10,13 @@ const getters = <GetterTree<StateRedditSubscription, any>>{
   getAllWidgetsConfig(state: StateRedditSubscription): Array<Object> {
     var confArray = Array<Object>();
     if (state.latestSubreditPostNamesConf !== undefined) {
-      confArray.push(state.latestSubreditPostNamesConf);
+      for (var widgetConf of state.latestSubreditPostNamesConf) {
+        if (widgetConf !== undefined) {
+          confArray.push(widgetConf);
+        }
+      }
     }
-    //TODO Do this for the others key state
+    //TODO Do this for the others key state (repeat this for for n model)
     //TODO push the other widgetConfs
     return confArray;
   }
@@ -20,9 +24,19 @@ const getters = <GetterTree<StateRedditSubscription, any>>{
 
 const mutations = <MutationTree<StateRedditSubscription>>{
   setLatestSubreditPostNames(state: StateRedditSubscription, newVal: LatestSubRedditPostNamesWidgetConfig) {
-    state.latestSubreditPostNamesConf = newVal;
-    console.log(newVal.componentName);
-    console.log(state.latestSubreditPostNamesConf.componentName);
+    if (state.latestSubreditPostNamesConf !== undefined) {
+      state.latestSubreditPostNamesConf.forEach(function (item, index) {
+        if (item.id == newVal.id) {
+          state.latestSubreditPostNamesConf![index] = newVal;
+          return;
+        }
+      })
+    }
+    else {
+      state.latestSubreditPostNamesConf = new Array<LatestSubRedditPostNamesWidgetConfig>();
+      console.log("undefined should be pass one time");
+    }
+    state.latestSubreditPostNamesConf.push(newVal)
   },
 };
 
@@ -34,7 +48,9 @@ const actions = <ActionTree<StateRedditSubscription, any>>{
   fetchLatestSubRedditPostNames(store) {
     //TODO
     //je suis sensé fetch mais j'hardcore l'actualise de ma state
-    var model = new LatestSubRedditPostNamesWidgetConfig("SubRedditNames", "", 0);//replace with fetching
+    var model = new LatestSubRedditPostNamesWidgetConfig("SubRedditNames", "", 0, "3538629");//replace with fetching
+    store.commit("setLatestSubreditPostNames", model);
+    model = new LatestSubRedditPostNamesWidgetConfig("SubRedditNames", "", 0, "dq963730");//replace with fetching
     store.commit("setLatestSubreditPostNames", model);
   },
 };
